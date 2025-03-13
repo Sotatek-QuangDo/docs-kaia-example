@@ -36,6 +36,7 @@ async function main(): Promise<any[]> {
   const receipt = await sentTx.wait();
   // console.log("receipt", receipt);
   result.push({ receipt });
+  
   return result;
 }
 export default function index() {

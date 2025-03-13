@@ -17,11 +17,11 @@ async function main(): Promise<any[]> {
   const msg = "hello";
   const msghex = ethers.hexlify(ethers.toUtf8Bytes(msg));
   const sig = await wallet.signMessage(msg);
-  console.log({ senderAddr, msg, msghex, sig });
+  // console.log({ senderAddr, msg, msghex, sig });
   result.push({ senderAddr, msg, msghex, sig: sig.signature });
 
   const addr1 = ethers.verifyMessage(msg, sig);
-  console.log("recoveredAddr lib", addr1, addr1.toLowerCase() === senderAddr);
+  // console.log("recoveredAddr lib", addr1, addr1.toLowerCase() === senderAddr);
   result.push({
     "recoveredAddr lib": addr1,
     "addr1.toLowerCase() === senderAddr": addr1.toLowerCase() === senderAddr,
@@ -33,7 +33,7 @@ async function main(): Promise<any[]> {
     sig,
     "latest",
   ]);
-  console.log("recoveredAddr rpc", addr2, addr2.toLowerCase() === senderAddr);
+  // console.log("recoveredAddr rpc", addr2, addr2.toLowerCase() === senderAddr);
   result.push({
     "recoveredAddr rpc": addr2,
     "addr2.toLowerCase() === senderAddr": addr2.toLowerCase() === senderAddr,

@@ -14,6 +14,7 @@ const wallet = new Wallet(senderPriv, provider);
 
 async function main(): Promise<any[]> {
   const result = [];
+
   const tx = {
     type: TxType.AccountUpdate,
     from: senderAddr,
@@ -21,6 +22,20 @@ async function main(): Promise<any[]> {
       type: AccountKeyType.Legacy,
     },
   };
+  console.log({
+    tx,
+    TxType,
+    AccountKeyType,
+    wallet,
+  });
+
+  const account = await provider.getAccount(senderAddr);
+  console.log({
+    account
+  });
+
+  const balance = await provider.getBalance(senderAddr);
+  console.log(`Balance: ${ethers.formatEther(balance)} KLAY`);
 
   const sentTx = await wallet.sendTransaction(tx);
   console.log("sentTx", sentTx.hash);

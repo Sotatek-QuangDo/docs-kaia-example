@@ -46,12 +46,11 @@ async function main(): Promise<any[]> {
   // sign 1: First signer sign from the tx object
   const populatedTx = await wallet1.populateTransaction(tx);
   const rawTx1 = await wallet1.signTransaction(populatedTx);
-  console.log("rawTx1", rawTx1);
+  // console.log("rawTx1", rawTx1);
 
   // sign 2: Middle signer sign from the rawTx
   const rawTx2 = await wallet2.signTransaction(rawTx1);
-  result.push({ rawTx2: rawTx2.transactionHash });
-  console.log("rawTx2", rawTx2);
+  // console.log("rawTx2", rawTx2);
 
   // sign 3: Last signer sign and send from the rawTx
   const sentTx3 = await wallet3.sendTransaction(rawTx2);
