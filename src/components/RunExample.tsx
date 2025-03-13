@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ArrowLeftIcon from "../assets/ArrowLeftIcon";
+import { useNavigate } from "react-router";
 
 export const RunExample = ({
   title,
@@ -11,6 +12,7 @@ export const RunExample = ({
   const [isLoading, setIsLoading] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [result, setResult] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top when entering page
@@ -40,6 +42,11 @@ export const RunExample = ({
 
   return (
     <div className="box-button">
+      <ArrowLeftIcon
+        onClick={() => {
+          navigate(-1);
+        }}
+      />
       <button
         disabled={isLoading}
         className={`button-run ${isLoading ? "loading" : ""}`}
